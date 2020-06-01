@@ -1,4 +1,4 @@
-from .app import compare_text
+from .word_compare import compare_text
 
 sample1 = ("The easiest way to earn points with Fetch Rewards is to just shop "
            "for the products you already love. If you have any participating brands "

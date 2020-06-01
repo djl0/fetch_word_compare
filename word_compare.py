@@ -12,7 +12,6 @@ def split_words(text):
         text = [text]
     sentences = [t.strip() for t in text if t]
     words = [[w.lower().strip(',') for w in s.split(' ')] for s in sentences]
-    print(words)
     return words
 
 def get_wordcounts(text):
@@ -90,12 +89,12 @@ def compare_text(text1, text2):
 
 
 if __name__ == "__main__":
-    w1 = w2 = None
+    phrases1 = phrases2 = None
     try:
-        w1 = sys.argv[1]
-        w2 = sys.argv[2]
+        phrases1 = sys.argv[1]
+        phrases2 = sys.argv[2]
     except:
         raise Exception("We need 2 word sets!")
 
-    final_score = compare_text(w1, w2)
+    final_score = compare_text(phrases1, phrases2)
     print(round(final_score, 4))
