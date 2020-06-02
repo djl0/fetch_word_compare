@@ -1,7 +1,7 @@
 import json
 from flask import Flask, request, jsonify
 
-from .word_compare import compare_text
+from word_compare import compare_text
 
 app = Flask(__name__)
 
@@ -12,3 +12,7 @@ def compare():
     p2 = req_data['phrase2']
     score = compare_text(p1, p2)
     return jsonify({'score': score})
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
