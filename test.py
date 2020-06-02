@@ -1,4 +1,4 @@
-from .word_compare import compare_text
+from .word_compare import WordComparer
 
 sample1 = ("The easiest way to earn points with Fetch Rewards is to just shop "
            "for the products you already love. If you have any participating brands "
@@ -21,17 +21,22 @@ sample3 = ("We are always looking for opportunities for you to earn more points,
 
 def test_equal():
     text = 'ab cd ef. Ghi j.'
-    assert compare_text(text, text) == 1
+    comparer = WordComparer(text, text)
+    assert comparer.compare_text() == 1
 
 def test_unequal():
     text1 = 'ab cd ef. Ghi j.'
     text2 = 'zz yy xx.'
-    assert compare_text(text1, text2) == 0
+    comparer = WordComparer(text1, text2)
+    assert comparer.compare_text() == 0
 
 def test_kinda_close():
     text1 = 'ab cd ef. Ghi j.'
     text2 = 'ab cd ef. Ghi z.'
-    assert compare_text(text1, text2) > 0.7
+    comparer = WordComparer(text1, text2)
+    assert comparer.compare_text() > 0.7
 
 def test_samples():
-    assert compare_text(sample1, sample2) > compare_text(sample1, sample3)
+    comparer_1_2 = WordComparer(sample1, sample2)
+    comparer_1_3 = WordComparer(sample1, sample3)
+    assert comparer_1_2.compare_text() > comparer_1_3.compare_text()
